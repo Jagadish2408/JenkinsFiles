@@ -1,17 +1,21 @@
 pipeline {
     agent any
-    environment {
-        PATH = "/opt/maven/bin:$PATH"
-    }
+
     stages {
-        stage('git clone') {
+        stage('Build') {
             steps {
-                git url: 'https://github.com/SaiDevOpsFaculty/testjava.git', branch: 'master'
+                sh 'date'
+                sh 'pwd'
             }
         }
-        stage('build') {
+        stage('Test') {
             steps {
-                sh 'mvn clean install'
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
